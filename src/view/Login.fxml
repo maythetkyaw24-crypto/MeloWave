@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<StackPane styleClass="main-bg" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+   <children>
+      <Canvas fx:id="animationCanvas" />
+
+      <!-- Main Container StackPane -->
+      <StackPane maxHeight="620.0" maxWidth="420.0" styleClass="glass-card">
+         <children>
+            
+            <!-- 1. LOGIN FORM VBOX -->
+            <VBox fx:id="loginFormBox" alignment="CENTER_LEFT" spacing="14.0" styleClass="form-container">
+               <children>
+                  <VBox alignment="CENTER_LEFT" spacing="3.0">
+                     <children>
+                        <Text styleClass="form-welcome" text=" MELOWAVE" />
+                        <Text styleClass="form-subtitle-msg" text="We are glad to see you :)" />
+                     </children>
+                  </VBox>
+                  
+                  <HBox alignment="CENTER" spacing="12.0">
+                     <children>
+                        <Button fx:id="googleButton" onAction="#handleGoogleLogin" styleClass="social-long-btn" text="  Sign in with Google" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="facebookButton" onAction="#handleFacebookLogin" styleClass="social-circle-btn" text="f" />
+                        <Button fx:id="iCloudButton" onAction="#handleiCloudLogin" styleClass="social-circle-btn" text="" />
+                     </children>
+                  </HBox>
+
+                  <HBox alignment="CENTER" spacing="15.0" styleClass="divider-box">
+                     <children>
+                        <Pane styleClass="line" HBox.hgrow="ALWAYS" />
+                        <Text styleClass="or-text" text="Or" />
+                        <Pane styleClass="line" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  
+                  <TextField fx:id="usernameField" promptText="Username or Email" styleClass="custom-input-pill" />
+                  
+                  <StackPane alignment="CENTER_RIGHT">
+                     <children>
+                        <PasswordField fx:id="passwordField" promptText="Password" styleClass="custom-input-pill" />
+                        <TextField fx:id="passwordVisibleField" promptText="Password" styleClass="custom-input-pill" />
+                        <Button fx:id="togglePasswordButton" styleClass="eye-btn" text="👁" />
+                     </children>
+                  </StackPane>
+
+                  <ComboBox fx:id="roleComboBox" prefWidth="350.0" promptText="Select Account Role" styleClass="custom-input-pill" />
+                  
+                  <HBox alignment="CENTER_LEFT">
+                     <children>
+                        <CheckBox fx:id="rememberMeCheckBox" styleClass="custom-checkbox" text="Remember me" />
+                     </children>
+                  </HBox>               
+                  
+                  <Button fx:id="loginButton" onAction="#handleLogin" prefWidth="350.0" styleClass="login-btn-pill" text="Sign In" />
+                  
+                  <HBox alignment="CENTER" spacing="5">
+                     <children>
+                        <Text styleClass="hint-text" text="Don't have an account?" />
+                        <Hyperlink onAction="#showSignUpForm" styleClass="signup-link" text="Sign Up" />
+                     </children>
+                  </HBox>
+                  
+                  <Text fx:id="statusText" styleClass="status-msg" />
+               </children>
+            </VBox>
+				<!-- 2. SIGN UP FORM VBOX -->
+            <VBox fx:id="signupFormBox" alignment="CENTER_LEFT" spacing="10.0" styleClass="form-container">
+               <children>
+                  <VBox alignment="CENTER_LEFT" spacing="2.0">
+                     <children>
+                        <Text styleClass="form-welcome" text="Create Account" />
+                        <Text styleClass="form-subtitle-msg" text="Join MeloWave Studio today :)" />
+                     </children>
+                  </VBox>
+                  
+                  <HBox alignment="CENTER" spacing="12.0">
+                     <children>
+                        <Button fx:id="regGoogleButton" onAction="#handleGoogleLogin" styleClass="social-long-btn" text="  Sign up with Google" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="regFacebookButton" onAction="#handleFacebookLogin" styleClass="social-circle-btn" text="f" />
+                        <Button fx:id="regICloudButton" onAction="#handleiCloudLogin" styleClass="social-circle-btn" text="" />
+                     </children>
+                  </HBox>
+
+                  <HBox alignment="CENTER" spacing="15.0" styleClass="divider-box">
+                     <children>
+                        <Pane styleClass="line" HBox.hgrow="ALWAYS" />
+                        <Text styleClass="or-text" text="Or" />
+                        <Pane styleClass="line" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  
+                  <TextField fx:id="regUsernameField" promptText="Username" styleClass="custom-input-pill" />
+                  <TextField fx:id="regEmailField" promptText="Email Address" styleClass="custom-input-pill" />
+                  
+                  <!-- Sign Up Password with Toggle Eye -->
+                  <StackPane alignment="CENTER_RIGHT">
+                     <children>
+                        <PasswordField fx:id="regPasswordField" promptText="Password" styleClass="custom-input-pill" />
+                        <TextField fx:id="regPasswordVisibleField" promptText="Password" styleClass="custom-input-pill" />
+                        <Button fx:id="regTogglePasswordButton" styleClass="eye-btn" text="👁" />
+                     </children>
+                  </StackPane>
+
+                  <!-- Sign Up Confirm Password with Toggle Eye -->
+                  <StackPane alignment="CENTER_RIGHT">
+                     <children>
+                        <PasswordField fx:id="regConfirmPasswordField" promptText="Confirm Password" styleClass="custom-input-pill" />
+                        <TextField fx:id="regConfirmVisibleField" promptText="Confirm Password" styleClass="custom-input-pill" />
+                        <Button fx:id="regToggleConfirmButton" styleClass="eye-btn" text="👁" />
+                     </children>
+                  </StackPane>
+                  
+                  <DatePicker fx:id="regDobPicker" prefWidth="350.0" promptText="Date of Birth" styleClass="custom-input-pill" />
+                  
+                  <Button fx:id="registerButton" onAction="#handleRegister" prefWidth="350.0" styleClass="login-btn-pill" text="Sign Up" />
+                  
+                  <HBox alignment="CENTER" spacing="5">
+                     <children>
+                        <Text styleClass="hint-text" text="Already have an account?" />
+                        <Hyperlink onAction="#showLoginForm" styleClass="signup-link" text="Sign In" />
+                     </children>
+                  </HBox>
+                  
+                  <Text fx:id="regStatusText" styleClass="status-msg" />
+               </children>
+            </VBox>
+         </children>
+      </StackPane>
+   </children>
+</StackPane>
